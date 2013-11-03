@@ -25,14 +25,14 @@ app.AppView = Backbone.View.extend({
 	},
 
 	render: function() {
-		var completed = app.Todos.completed().length();
-		var remaining = app.Todos.remaining().length();
+		var completed = app.Todos.completed().length;
+		var remaining = app.Todos.remaining().length;
 
-		if (app.Todos.length()) {
-			this.main.show();
-			this.footer.show();
+		if (app.Todos.length) {
+			this.$main.show();
+			this.$footer.show();
 
-			this.$footer.html(this.statstemplate({
+			this.$footer.html(this.statsTemplate({
 				completed: completed,
 				remaining: remaining
 			}));
@@ -42,11 +42,11 @@ app.AppView = Backbone.View.extend({
 				.filter("[href='#/" + (app.TodoFilter || "") + "']")
 				.addClass("selected");
 		} else {
-			this.main.hide();
-			this.footer.hide();
+			this.$main.hide();
+			this.$footer.hide();
 		}
 
-		this.allCheckboxes.checked = !remaining;
+		this.allCheckbox.checked = !remaining;
 	},
 
 	addOne: function(todo) {
@@ -80,7 +80,7 @@ app.AppView = Backbone.View.extend({
 			return;
 		}
 
-		app.Todos.create(this.newAttributes);
+		app.Todos.create(this.newAttributes());
 		this.$input.val("");
 	},
 
