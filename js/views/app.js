@@ -64,7 +64,7 @@ app.AppView = Backbone.View.extend({
 	},
 
 	filterAll: function() {
-		app.Todos.each(filterOne, this);
+		app.Todos.each(this.filterOne, this);
 	},
 
 	newAttributes: function() {
