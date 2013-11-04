@@ -4,7 +4,7 @@ app.TodoView = Backbone.View.extend({
 	tagName: "li",
 	template: _.template($("#item-template").html()),
 	events: {
-		"click .toggle": "togglecompleted",
+		"click .toggle": "toggleCompleted",
 		"dbClick label": "edit",
 		"click .destroy": "clear",
 		"keypress .edit": "updateOnEnter",
@@ -13,7 +13,7 @@ app.TodoView = Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(this.model, "change", this.render);
-		this.listenTo(this.model, "destroy", this.destroy);
+		this.listenTo(this.model, "destroy", this.remove);
 		this.listenTo(this.model, "visible", this.toggleVisible);
 	},
 
@@ -39,7 +39,7 @@ app.TodoView = Backbone.View.extend({
 		);
 	},
 
-	togglecompleted: function() {
+	toggleCompleted: function() {
 		this.model.toggle();
 	},
 

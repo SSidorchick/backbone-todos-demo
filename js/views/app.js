@@ -6,7 +6,7 @@ app.AppView = Backbone.View.extend({
 	events: {
 		"keypress #new-todo": "createOnEnter",
 		"click #clear-completed": "clearCompleted",
-		"click #toogle-all": "toggleAllComlete"
+		"click #toggle-all": "toggleAllComplete"
 	},
 
 	initialize: function() {
@@ -89,8 +89,8 @@ app.AppView = Backbone.View.extend({
 		return false;
 	},
 
-	toggleAllCompleted: function() {
-		var completed = this.allCheckboxes.checked;
+	toggleAllComplete: function() {
+		var completed = this.allCheckbox.checked;
 
 		app.Todos.each(function(todo) {
 			todo.save({
